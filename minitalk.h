@@ -22,7 +22,7 @@ typedef struct
 } t_a;
 
 int ft_atoi(const char *msg);
-
+void ft_putpid(int pid);
 
 #endif
 
