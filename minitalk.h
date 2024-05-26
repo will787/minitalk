@@ -9,7 +9,6 @@ char *: "String",\
 void *: "Pointer",\
 default: "Undefined")
 
-# include <stdio.h>
 # include <signal.h>
 # include <unistd.h>
 
@@ -20,9 +19,6 @@ typedef struct
     int nb;
     int i;
 } t_a;
-
-int ft_atoi(const char *msg);
-void ft_putpid(int pid);
 
 #endif
 

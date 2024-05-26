@@ -1,6 +1,6 @@
 #include "minitalk.h"
 
-int ft_atoi(const char *msg)
+static int ft_atoi(const char *msg)
 {
     t_a t;
 
@@ -23,15 +23,25 @@ int ft_atoi(const char *msg)
     return(t.result * t.sign);
 }
 
-void send_signal(__pid_t pid, char *msg)
+static void    send_signal(pid_t pid, char *msg)
 {
-    unsigned int i;
-    unsigned int j;
+    int i;
+    int shift;
 
-    i = 0; 
+    i = 0;
     while (msg[i] != '\0')
     {
-        
+        shift = 7;
+        while (shift >= 0)
+        {
+            if ((msg[i] >> shift) & 1)
+                kill(pid, SIGUSR1); // 1 retorno
+            else
+                kill(pid, SIGUSR2); // 0 retorno
+            shift--;
+            usleep(300);
+        }
+        i++;
     }
     
 }
@@ -39,14 +49,13 @@ void send_signal(__pid_t pid, char *msg)
 
 int main(int argc, char **argv)
 {
-    __pid_t s_pid;
+    pid_t s_pid;
     char *msg; 
 
     if(argc == 3)
     {
         s_pid = ft_atoi(argv[1]);
-        msg = ft_atoi(argv[2]);
-    
+        msg = argv[2];
         send_signal(s_pid, msg);
     }
     else

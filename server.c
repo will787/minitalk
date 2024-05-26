@@ -1,6 +1,6 @@
 #include "minitalk.h"
 
-void ft_putpid(int pid)
+static void ft_putpid(int pid)
 {
     char c;
 
@@ -19,7 +19,7 @@ void ft_putpid(int pid)
 static void drop_signal(int signal)
 {
     static char  c;
-    static unsigned int i;
+    static int i;
 
     i++; 
     if(signal == SIGUSR1)
@@ -41,6 +41,7 @@ int main(void)
 
     s_pid = getpid();
     ft_putpid(s_pid);
+    write(1, "\n", 1);
     signal(SIGUSR1, drop_signal);
     signal(SIGUSR2, drop_signal);
     while (1)
