@@ -1,7 +1,7 @@
-#ifndef MINITALK_H
-#define MINITALK_H
+# ifndef MINITALK_H
+# define MINITALK_H
 
-#define typeof(var) _Generic( (var),\
+# define typeof(var) _Generic( (var),\
 char: "Char",\
 int: "Integer",\
 float: "Float",\
@@ -18,7 +18,7 @@ typedef struct
     int sign;
     int nb;
     int i;
-} t_a;
+}   t_a;
 
 #endif
 

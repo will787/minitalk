@@ -1,6 +1,6 @@
 #include "minitalk.h"
 
-static int ft_atoi(const char *msg)
+static int  ft_atoi(const char *msg)
 {
     t_a t;
 
@@ -10,7 +10,7 @@ static int ft_atoi(const char *msg)
         t.i++;
     while (msg[t.i] == '-' || msg[t.i] == '+')
     {
-        if(msg[t.i] == '-')
+        if (msg[t.i] == '-')
             t.sign = -1; 
         t.i++;
     }
@@ -20,7 +20,7 @@ static int ft_atoi(const char *msg)
         t.result =  (t.result * 10) + (msg[t.i] - 48);
         t.i++;
     }
-    return(t.result * t.sign);
+    return (t.result * t.sign);
 }
 
 static void    send_signal(pid_t pid, char *msg)
@@ -43,16 +43,15 @@ static void    send_signal(pid_t pid, char *msg)
         }
         i++;
     }
-    
 }
 
 
 int main(int argc, char **argv)
 {
-    pid_t s_pid;
-    char *msg; 
+    pid_t   s_pid;
+    char    *msg; 
 
-    if(argc == 3)
+    if (argc == 3)
     {
         s_pid = ft_atoi(argv[1]);
         msg = argv[2];
@@ -62,9 +61,8 @@ int main(int argc, char **argv)
         write(1,"Error for arguments, Try Again !\n", 33);
     return (0);
 }
-
 /*
         printf("%s\n", typeof(a1));
         printf("%s\n", typeof(a2));
         printf("%d\n", a1);
-        */
+*/
